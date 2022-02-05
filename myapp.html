@@ -1,0 +1,208 @@
+<html>
+  <head>
+    <title>Booking App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="showOccupancy()">
+    <section id="main-container">
+      <div class="card">
+        <div class="cardheader">
+          <h1>Railway Booking System</h1>
+          <h4>Singapore <----> Thailand</h4>
+        </div>
+        <div class="cardbody">
+          <div class="seats cardmodule">
+            <div class="seats-header-container">
+              <h3 class="seats-header">
+                Seats Available:
+                <span id="seatavailable"></span>
+              </h3>
+            </div>
+            <div class="flex-container">
+              <div class="col">
+                <div class="seat" onclick="seatOnClick(event)" id="id_1">1</div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_2">2</div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_3">3</div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_4">4</div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_5">5</div>
+              </div>
+              <div class="col">
+                <div class="seat" onclick="seatOnClick(event)" id="id_6">6</div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_7">7</div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_8">8</div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_9">9</div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_10">
+                  10
+                </div>
+              </div>
+              <div class="col">
+                <div class="seat" onclick="seatOnClick(event)" id="id_11">
+                  11
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_12">
+                  12
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_13">
+                  13
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_14">
+                  14
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_15">
+                  15
+                </div>
+              </div>
+              <div class="col">
+                <div class="seat" onclick="seatOnClick(event)" id="id_16">
+                  16
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_17">
+                  17
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_18">
+                  18
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_19">
+                  19
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_20">
+                  20
+                </div>
+              </div>
+              <div class="col">
+                <div class="seat" onclick="seatOnClick(event)" id="id_21">
+                  21
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_22">
+                  22
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_23">
+                  23
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_24">
+                  24
+                </div>
+                <div class="seat" onclick="seatOnClick(event)" id="id_25">
+                  25
+                </div>
+              </div>
+            </div>
+            <div class="legend-container flex">
+              <div class="seat legend reserved"></div>
+              <span>Occupied</span>
+              <div class="seat legend"></div>
+              <span>Available</span>
+            </div>
+          </div>
+          <div class="console cardmodule">
+            <div class="tab">
+              <button
+                class="tablinks active"
+                onclick="tabToggler(event, 'Book')"
+              >
+                Book
+              </button>
+              <button
+                class="tablinks"
+                id="edit_tab"
+                onclick="tabToggler(event, 'Edit')"
+              >
+                Edit
+              </button>
+              <button
+                class="tablinks"
+                onclick="tabToggler(event, 'View');showPagination();showBookingList()"
+              >
+                View
+              </button>
+            </div>
+            <div id="Book" class="tabcontent active">
+              <h3>Book a Ticket</h3>
+              <div class="bookform form">
+                <label for="bfname"><span>Name:</span></label>
+                <input type="text" name="bfname" id="bfname" />
+                <br />
+                <br />
+                <label for="bfhpnumber"><span>Phone:</span></label>
+                <input type="number" name="bfhpnumber" id="bfhpnumber" />
+                <br />
+                <br />
+                <button type="submit" id="bfsubmit" onclick="onNewBooking()">
+                  Book Now
+                </button>
+                <div id="bookingresulttext" class="responsetext"></div>
+              </div>
+              <br />
+            </div>
+
+            <div id="Edit" class="tabcontent">
+              <h3>Modify a Booking</h3>
+              <div class="cancelform form">
+                <label for="cfid"><span>Ticket ID:</span></label>
+                <input type="text" name="cfid" id="cfid" />
+                <br />
+                <br />
+                <label for="cfname"><span>Name:</span></label>
+                <input type="text" name="cfname" id="cfname" />
+                <br />
+                <br />
+                <label for="cfhpnumber"><span>Phone:</span></label>
+                <input type="number" name="cfhpnumber" id="cfhpnumber" />
+                <br />
+                <br />
+                <div class="flex">
+                  <button
+                    type="submit"
+                    id="cfmodify"
+                    onclick="onModifyBooking()"
+                  >
+                    Modify
+                  </button>
+                  <div style="width: 10px"></div>
+                  <button
+                    type="submit"
+                    id="cfcancel"
+                    onclick="onCancelBooking()"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="View" class="tabcontent">
+              <h3>List of Booking</h3>
+              <div class="flex paginationContainer">
+                <span>-</span>
+                <div id="pagination"></div>
+                <span>-</span>
+              </div>
+              <table class="table bookingtable">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody id="bookingList"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="cardfooter">
+          <p>
+            <span>Brought you by Ding Ming - IT5007</span><br />
+            <small>&copy; <span id="year"></span> by Singapore MSRT</small>
+          </p>
+        </div>
+      </div>
+    </section>
+    <script src="database.js"></script>
+    <script src="myapp.js"></script>
+    <script>
+      document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+  </body>
+</html>

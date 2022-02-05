@@ -1,0 +1,248 @@
+:root {
+  --darkblue: #0c1440;
+  --offblue: #3a5d8c;
+  --green: #84bfaa;
+  --light-green: #a4b9b2;
+  --yellow: #f2be5c;
+  --light-yellow: #e4c793;
+  --red: #f27a5e;
+  --light-red: #f3a998;
+}
+
+#main-container {
+  text-align: center;
+}
+
+#main-container .card {
+  width: 80%;
+  border: 2px solid var(--offblue);
+  background-color: var(--yellow);
+  margin: auto;
+  padding: 30px 8px;
+  border-radius: 5px;
+}
+
+.card h1 {
+  color: var(--darkblue);
+  font-size: 48px;
+  margin: 0;
+}
+
+.card h4 {
+  color: var(--darkblue);
+  margin: 5 10 20 10;
+}
+.cardbody {
+  display: flex;
+  margin: 10px;
+  height: 500px;
+  justify-content: space-around;
+}
+
+.cardmodule {
+  width: 45%;
+  height: 430;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.seats {
+  background-color: var(--green);
+}
+.seats-header-container {
+  height: 50px;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.seats-header {
+  line-height: 50px;
+  margin: 0;
+  top: 50%;
+  bottom: 50%;
+}
+
+.seat {
+  width: 45;
+  height: 45;
+  /* avaialbe = white , occupied = darkblue */
+  background-color: white;
+  margin: 8px;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  line-height: 45px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend-container {
+  font-size: 10;
+  line-height: 10px;
+}
+
+.seat.legend {
+  width: 10;
+  height: 10;
+  line-height: 10px;
+}
+
+.seat.reserved {
+  background-color: var(--darkblue);
+  color: white;
+  cursor: pointer;
+}
+.seat.reserved:hover {
+  background-color: var(--offblue);
+  color: white;
+}
+
+.console {
+  background-color: white;
+  position: relative;
+}
+
+.tab {
+  overflow: hidden;
+  padding: -10px;
+  border-bottom: 3px solid var(--yellow);
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: black;
+}
+
+.tab button:hover {
+  background-color: var(--light-yellow);
+}
+
+.tab button.active {
+  background-color: var(--yellow);
+}
+
+.tabcontent {
+  text-align: left;
+  display: none;
+}
+
+.tabcontent.active {
+  display: block;
+}
+
+.form {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form input {
+  width: 100%;
+}
+
+.form button {
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+.form .responsetext {
+  text-align: center;
+}
+#bfsubmit {
+  background-color: var(--yellow);
+}
+#bfsubmit:hover {
+  background-color: var(--light-yellow);
+}
+
+#bookingresulttext {
+  height: 15px;
+}
+
+#cfmodify {
+  background-color: var(--green);
+}
+#cfcancel {
+  background-color: var(--red);
+}
+#cfmodify:hover {
+  background-color: var(--light-green);
+}
+#cfcancel:hover {
+  background-color: var(--light-red);
+}
+
+.table {
+  text-align: left;
+  border-collapse: collapse;
+  font-size: 14;
+  width: 100%;
+  max-height: 200;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  max-width: 100;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.table th {
+  padding-top: 10;
+  padding-bottom: 10;
+  padding-left: 5;
+  padding-right: 5;
+  color: black;
+  background-color: var(--yellow);
+}
+
+.table td {
+  padding: 5;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: rgb(247, 247, 247);
+}
+
+.table tbody tr:hover {
+  background-color: var(--yellow);
+}
+.table tbody {
+  overflow: auto;
+
+  max-height: 100px;
+}
+.paginationContainer {
+  position: absolute;
+  padding-top: 10;
+  bottom: 10;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#pagination a {
+  padding: 5;
+  cursor: pointer;
+}
+
+#pagination a:hover {
+  color: var(--yellow);
+}
