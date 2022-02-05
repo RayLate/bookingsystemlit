@@ -31,10 +31,6 @@ class Database {
     return true;
   }
 
-  occupiedCount() {
-    return this.seats.filter((seat) => seat.reserved).length;
-  }
-
   getFirstEmptySeat() {
     if (!this.isFull()) return this.seats.find((seat) => !seat.reserved);
     return null;
@@ -42,6 +38,10 @@ class Database {
 
   saveDatabase(seats) {
     window.localStorage.setItem("seats", JSON.stringify(seats));
+  }
+
+  occupiedCount() {
+    return this.seats.filter((seat) => seat.reserved).length;
   }
 
   resetDatabase() {
@@ -55,6 +55,7 @@ class Database {
         timestamp: "",
       };
     }
+    this.seats = seats;
     this.saveDatabase(seats);
   }
 
@@ -83,9 +84,10 @@ class Database {
   }
 
   updateSeat(id, name, number, timestamp) {
-    console.log(id, name, number, timestamp);
     if (!this.searchResult(id)) return null;
     var index = parseInt(id.replace("id_", "")) - 1;
+    if (this.seats[index].reserved === false) return null;
+
     this.seats[index] = {
       ...this.seats[index],
       name: name,

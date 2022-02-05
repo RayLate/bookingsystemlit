@@ -1,6 +1,5 @@
 // Init
 var database = new Database();
-console.log(database.getDatabase());
 
 const tabToggler = (event, funcName) => {
   var i, tabcontent, tablinks;
@@ -52,18 +51,17 @@ const resetInput = () => {
 
 const showOccupancy = () => {
   document.getElementById("seatavailable").textContent =
-    25 - database.occupiedCount();
+    database.getDatabase().length - database.occupiedCount();
   database.getDatabase().map((seat) => {
     if (seat.reserved) {
       document.getElementById(seat.id).classList.add("reserved");
     } else {
       document.getElementById(seat.id).classList.remove("reserved");
-      document.getElementById(seat.id).disabled = true;
     }
   });
 };
 
-const onNewBooking = (event) => {
+const onNewBooking = () => {
   var username, userphone, timestamp;
   username = document.getElementById("bfname");
   userphone = document.getElementById("bfhpnumber");
@@ -209,4 +207,7 @@ const showPagination = () => {
     .join("");
 };
 
-const resetBookings = () => database.resetDatabase();
+const resetBookings = () => {
+  database.resetDatabase();
+  showOccupancy();
+};
