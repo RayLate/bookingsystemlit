@@ -44,6 +44,20 @@ class Database {
     window.localStorage.setItem("seats", JSON.stringify(seats));
   }
 
+  resetDatabase() {
+    var seats = [];
+    for (var i = 0; i < 25; i++) {
+      seats[i] = {
+        id: `id_${i + 1}`,
+        reserved: false,
+        name: "",
+        number: "",
+        timestamp: "",
+      };
+    }
+    this.saveDatabase(seats);
+  }
+
   /**
    * @param {number} id
    * @param {string} name
@@ -64,7 +78,6 @@ class Database {
       window.localStorage.setItem("seats", JSON.stringify(this.seats));
       return this.seats[index];
     } else {
-
       return null;
     }
   }

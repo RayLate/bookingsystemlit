@@ -208,3 +208,5 @@ const showPagination = () => {
     )
     .join("");
 };
+
+const resetBookings = () => database.resetDatabase();
